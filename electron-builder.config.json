@@ -9,6 +9,7 @@
   "asar": true,
   "asarUnpack": ["**/*.node"],
   "compression": "maximum",
+  "publish": null,
   "afterPack": "scripts/after-pack.js",
   "directories": {
     "output": "dist-electron",
