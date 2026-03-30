@@ -51,14 +51,8 @@
     "icon": "build/icon.icns",
     "artifactName": "${productName}-${version}-${arch}.${ext}",
     "category": "public.app-category.utilities",
-    "hardenedRuntime": true,
-    "gatekeeperAssess": false,
-    "entitlements": "build/entitlements.mac.plist",
-    "entitlementsInherit": "build/entitlements.mac.plist",
-    "extendInfo": {
-      "NSCameraUsageDescription": "此应用需要访问摄像头以扫描 USB 设备",
-      "NSMicrophoneUsageDescription": "此应用需要访问麦克风"
-    }
+    "hardenedRuntime": false,
+    "gatekeeperAssess": false
   },
   "linux": {
     "target": ["AppImage"],
