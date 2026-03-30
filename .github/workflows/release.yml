@@ -41,13 +41,14 @@ jobs:
           name: macos-builds
           path: dist-electron/*.dmg
       
-      - name: Upload to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist-electron/*.dmg
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # 暂时注释掉自动上传到 Release，避免 GH_TOKEN 错误
+      # - name: Upload to Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     files: dist-electron/*.dmg
+      #     generate_release_notes: true
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Windows 构建
   build-windows:
@@ -75,13 +76,14 @@ jobs:
           name: windows-builds
           path: dist-electron/*.exe
       
-      - name: Upload to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist-electron/*.exe
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # 暂时注释掉自动上传到 Release
+      # - name: Upload to Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     files: dist-electron/*.exe
+      #     generate_release_notes: true
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Linux 构建
   build-linux:
@@ -109,10 +111,11 @@ jobs:
           name: linux-builds
           path: dist-electron/*.{AppImage,deb,rpm}
       
-      - name: Upload to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist-electron/*
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # 暂时注释掉自动上传到 Release
+      # - name: Upload to Release
+      #   uses: softprops/action-gh-release@v1
+      #   with:
+      #     files: dist-electron/*
+      #     generate_release_notes: true
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
