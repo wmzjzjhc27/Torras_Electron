@@ -1,0 +1,183 @@
+/* ===== 移动端响应式优化 ===== */
+
+/* 
+ * 禁止缩放和横向滚动
+ * 确保在所有移动设备上都有良好的体验
+ */
+
+/* 根元素溢出控制 */
+html {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-text-size-adjust: 100%; /* 禁止 iOS 自动放大字体 */
+  -ms-text-size-adjust: 100%;
+}
+
+/* Body 限制 */
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* 所有容器元素 */
+.container,
+.container-fluid {
+  max-width: 100vw;
+  /* 注意：不能设置 overflow-x: hidden，否则会破坏 sticky 定位 */
+}
+
+/* 导航栏响应式优化 */
+nav {
+  max-width: 100vw;
+  /* 注意：不能设置 overflow-x: hidden，否则会破坏 sticky 定位 */
+  /* overflow-x 由 Navbar 组件的内联样式控制 */
+}
+
+/* 侧边栏在移动端隐藏 */
+@media (max-width: 767px) {
+  aside {
+    display: none !important;
+  }
+}
+
+/* 图片响应式 */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 表格响应式 */
+table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Flexbox 容器优化 */
+.flex,
+.row {
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+/* 卡片组件 */
+.ant-card,
+.card {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 按钮不会超出屏幕 */
+button,
+.btn,
+.ant-btn {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 输入框和表单元素 */
+input,
+textarea,
+select,
+.ant-input {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* 长文本自动换行 */
+p,
+span,
+div {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* 移动端特定优化 */
+@media (max-width: 767px) {
+  /* 所有元素强制不超出视口 */
+  * {
+    max-width: 100vw !important;
+  }
+  
+  /* 移除所有固定的宽度和最小宽度 */
+  [style*="width"] {
+    max-width: 100% !important;
+  }
+  
+  [style*="min-width"] {
+    min-width: auto !important;
+  }
+  
+  /* 固定定位元素也要限制 */
+  [style*="position: fixed"],
+  [style*="position:absolute"] {
+    max-width: 100vw !important;
+  }
+  
+  /* 登录卡片适配 */
+  .login-card {
+    width: 90% !important;
+    max-width: 420px !important;
+    margin: 0 auto;
+  }
+  
+  /* 导航栏适配 */
+  nav {
+    width: 100% !important;
+  }
+}
+
+/* 平板适配 */
+@media (min-width: 768px) and (max-width: 1023px) {
+  * {
+    max-width: 100vw !important;
+  }
+}
+
+/* 触摸设备优化 */
+@media (pointer: coarse) {
+  /* 增大点击区域 */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+  }
+  
+  /* 禁用不必要的 hover 效果 */
+  .login-card:hover {
+    transform: none;
+  }
+}
+
+/* 防止长按选择文本导致的菜单弹出 */
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 安全区域适配（iPhone X+） */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

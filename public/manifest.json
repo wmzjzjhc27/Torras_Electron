@@ -1,0 +1,27 @@
+{
+  "name": "嵌入式系统应用",
+  "short_name": "嵌入式系统",
+  "description": "高性能嵌入式后台管理系统",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e21",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity"],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

@@ -1,0 +1,139 @@
+{
+  "app": {
+    "title": "Embedded System App",
+    "description": "Modern application based on React + TypeScript + Vite"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile",
+    "dashboard": "Dashboard",
+    "devices": "Device Management",
+    "help": "Help Center",
+    "journal": "Log Center",
+    "settings": "System Settings",
+    "deviceList": "Device List",
+    "deviceMonitor": "Device Monitor",
+    "maintenanceRecord": "Maintenance Records",
+    "systemLogs": "System Logs",
+    "operationLogs": "Operation Logs",
+    "errorLogs": "Error Logs",
+    "generalSettings": "General Settings",
+    "securitySettings": "Security Settings",
+    "networkSettings": "Network Settings"
+  },
+  "home": {
+    "welcome": "Welcome to Embedded System App",
+    "subtitle": "This is a modern responsive application built with React + TypeScript + Vite",
+    "features": "Features",
+    "techStack": "Technology Stack",
+    "responsiveDesign": "Responsive Design",
+    "modernTech": "Modern Technology Stack"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Focus on innovative technology, providing quality products and services",
+    "techStack": "Technology Stack",
+    "contact": "Contact Us",
+    "features": "Project Features"
+  },
+  "login": {
+    "title": "User Login",
+    "subtitle": "Welcome back, please login to your account",
+    "username": "Username",
+    "password": "Password",
+    "remember": "Remember me",
+    "submit": "Login",
+    "loggingIn": "Logging in...",
+    "error": "Login failed, please try again",
+    "quickLogin": "💡 Quick Login (Dev Environment)",
+    "noAccount": "No account? Register now",
+    "forgotPassword": "Forgot password?",
+    "register": "Register Now",
+    "loginSuccess": "Login successful!",
+    "loginFailed": "Login failed, please check your username and password",
+    "retry": "Login failed, please try again later",
+    "usernameRequired": "Please enter username",
+    "usernameMinLength": "Username must be at least 3 characters",
+    "passwordRequired": "Please enter password",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "formValidationFailed": "Form validation failed"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you visited does not exist or has been removed",
+    "backHome": "🏠 Back to Home"
+  },
+  "help": {
+    "title": "Help Center",
+    "subtitle": "Welcome to the embedded system management platform. For any questions, please check the FAQs below or contact technical support.",
+    "faqTitle": "Frequently Asked Questions",
+    "howToAddDevice": "How to add a new device?",
+    "howToAddDeviceAnswer": "Go to Device Management > Device List, click the \"Add Device\" button in the upper right corner, fill in the device information and save.",
+    "howToViewMonitor": "How to view device monitoring data?",
+    "howToViewMonitorAnswer": "Go to Device Management > Device Monitor, select the device you want to view to see real-time monitoring data.",
+    "howToExportLogs": "How to export logs?",
+    "howToExportLogsAnswer": "Go to Log Center > System Logs/Operation Logs/Error Logs, select the time range and click the \"Export\" button.",
+    "forgotPassword": "What if I forgot my password?",
+    "forgotPasswordAnswer": "Click the \"Forgot Password\" link on the login page and follow the prompts to reset your password. If you still can't solve it, please contact administrator.",
+    "supportTitle": "Technical Support",
+    "hotline": "Customer Service Hotline",
+    "email": "Technical Support Email",
+    "serviceHours": "Service Hours",
+    "serviceTimeValue": "Monday to Friday 9:00 AM - 6:00 PM"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "back": "Back",
+    "add": "Add",
+    "export": "Export",
+    "reset": "Reset",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK"
+  },
+  "device": {
+    "mobile": "📱 Mobile",
+    "tablet": "📱 Tablet",
+    "desktop": "💻 Desktop"
+  },
+  "status": {
+    "windowWidth": "Window Width",
+    "windowHeight": "Window Height",
+    "currentBreakpoint": "Current Breakpoint",
+    "deviceType": "Device Type"
+  },
+  "auth": {
+    "logoutSuccess": "Successfully logged out",
+    "logoutFailed": "Logout failed",
+    "pleaseLogin": "Please login first",
+    "redirecting": "Redirecting..."
+  },
+  "user": {
+    "info": "User Information",
+    "username": "Username",
+    "role": "Role",
+    "email": "Email",
+    "phone": "Phone",
+    "department": "Department",
+    "online": "Online",
+    "administrator": "System Administrator",
+    "logout": "Logout",
+    "logoutConfirm": "Are you sure you want to logout?",
+    "logoutSuccess": "Successfully logged out",
+    "logoutFailed": "Logout failed",
+    "profile": "Profile",
+    "settings": "Settings"
+  }
+}

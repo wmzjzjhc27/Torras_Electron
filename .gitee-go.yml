@@ -1,0 +1,56 @@
+# Gitee CI/CD 配置文件
+# 在 Gitee 仓库页面 -> 服务 -> Gitee CI/CD 中启用
+# 或者使用第三方服务如 GitHub Actions
+
+stages:
+  - name: 'build-macos'
+    jobs:
+      - name: 'macos-build'
+        runner: macos
+        steps:
+          - name: Checkout
+            uses: checkout@v1
+
+          - name: Setup Node.js
+            uses: node@v1
+            with:
+              version: '20'
+
+          - name: Install dependencies
+            run: npm ci
+
+          - name: Build for macOS
+            run: npm run electron:build:mac
+            env:
+              NODE_ENV: production
+
+          - name: Upload artifacts
+            uses: upload@v1
+            with:
+              path: dist-electron/*.dmg
+
+  - name: 'build-windows'
+    jobs:
+      - name: 'windows-build'
+        runner: windows
+        steps:
+          - name: Checkout
+            uses: checkout@v1
+
+          - name: Setup Node.js
+            uses: node@v1
+            with:
+              version: '20'
+
+          - name: Install dependencies
+            run: npm ci
+
+          - name: Build for Windows
+            run: npm run electron:build:win
+            env:
+              NODE_ENV: production
+
+          - name: Upload artifacts
+            uses: upload@v1
+            with:
+              path: dist-electron/*.exe

@@ -1,0 +1,73 @@
+{
+  "appId": "com.tuolas.app",
+  "productName": "图拉斯",
+  "extraMetadata": {
+    "name": "tuolas-app",
+    "productName": "图拉斯",
+    "main": "electron/main.js"
+  },
+  "asar": true,
+  "asarUnpack": ["**/*.node"],
+  "compression": "maximum",
+  "afterPack": "scripts/after-pack.js",
+  "directories": {
+    "output": "dist-electron",
+    "buildResources": "build"
+  },
+  "files": [
+    "dist/**/*",
+    "electron/main.js",
+    "electron/preload.js"
+  ],
+  "extraResources": [],
+  "extraFiles": [],
+  "win": {
+    "target": [{ 
+      "target": "nsis",
+      "arch": ["x64"]
+    }],
+    "icon": "build/icon.ico",
+    "requestedExecutionLevel": "asInvoker",
+    "artifactName": "${productName}-Setup-${version}.${ext}",
+    "fileAssociations": [],
+    "extraResources": []
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "menuCategory": true,
+    "shortcutName": "图拉斯",
+    "runAfterFinish": true
+  },
+  "mac": {
+    "target": [
+      {
+        "target": "dmg",
+        "arch": ["x64", "arm64"]
+      }
+    ],
+    "icon": "build/icon.icns",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "category": "public.app-category.utilities",
+    "hardenedRuntime": true,
+    "gatekeeperAssess": false,
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist",
+    "extendInfo": {
+      "NSCameraUsageDescription": "此应用需要访问摄像头以扫描 USB 设备",
+      "NSMicrophoneUsageDescription": "此应用需要访问麦克风"
+    },
+    "extraResources": [
+      {
+        "from": "build/icon.icns",
+        "to": "icon.icns"
+      }
+    ]
+  },
+  "linux": {
+    "target": ["AppImage"],
+    "icon": "build/icon.png",
+    "artifactName": "${productName}-${version}.${ext}"
+  }
+}

@@ -1,0 +1,655 @@
+/* 引入响应式工具类 */
+@import './styles/responsive.css';
+@import './styles/mobile.css';
+@import './styles/performance.css';
+
+/* ===== 性能优化 - GPU 加速 ===== */
+* {
+  /* 启用硬件加速，减少重绘重排 */
+  will-change: auto;
+}
+
+/* 对频繁动画的元素强制 GPU 加速 */
+.mobile-menu-panel,
+.sidebar-user-hover-glow,
+.status-pulse {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ===== 全局溢出控制 - 防止移动端缩放后横向滚动 ===== */
+html {
+  overflow-x: hidden;      /* 禁止水平滚动 */
+  width: 100%;             /* 确保宽度限制 */
+  -webkit-text-size-adjust: 100%; /* 禁止 iOS 自动调整字体大小 */
+  scroll-behavior: smooth; /* 平滑滚动 */
+  overflow-y: auto;        /* ✅ 关键！允许垂直滚动，这样 sticky 才能生效 */
+}
+
+body {
+  overflow-x: hidden;      /* 禁止水平滚动 */
+  max-width: 100vw;        /* 限制最大宽度为视口宽度 */
+  position: relative;      /* 确保定位上下文 */
+  overflow-y: auto;        /* ✅ 关键！允许垂直滚动 */
+  min-height: 100vh;       /* ✅ 确保最小高度 */
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.login-input input::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+/* 导航链接样式 */
+.nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #f0f0f0;
+  color: var(--primary-color);
+}
+
+.active-nav-link {
+  color: var(--primary-color);
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.mobile-nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+  background-color: #e8e8e8;
+}
+
+.active-mobile-nav {
+  color: var(--primary-color);
+  background-color: #e8e8e8;
+  font-weight: bold;
+}
+
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  /* 移除默认的 flex 居中布局，让页面正常从上到下排列 */
+  /* display: flex; */
+  /* place-items: center; */
+  min-width: 320px;
+  background-color: var(--background-color);
+  /* 确保不超出视口 */
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+
+  a:hover {
+    color: #747bff;
+  }
+
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* ==================== 科技动画效果 ==================== */
+
+/* 加载旋转动画 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 浮动光球背景 */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+
+  50% {
+    transform: translateY(-40px) translateX(-10px);
+  }
+
+  75% {
+    transform: translateY(-20px) translateX(10px);
+  }
+}
+
+/* 网格移动 */
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* 扫描线向下移动 */
+@keyframes scanDown {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.5;
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+/* 标题发光脉冲 */
+@keyframes titleGlow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 30px rgba(102, 126, 234, 0.8));
+  }
+}
+
+/* 光晕脉冲 */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* 流光溢彩 */
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+/* 抖动动画（错误提示） */
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* 悬浮上升效果 */
+@keyframes hoverUp {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* 呼吸效果 */
+@keyframes breathe {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(102, 126, 234, 0.6);
+  }
+}
+
+/* 旋转光芒 */
+@keyframes rotateGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 粒子漂浮类 */
+.floating-orb {
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* 登录卡片悬停效果 */
+.login-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 10px 60px rgba(102, 126, 234, 0.4),
+    0 20px 100px rgba(118, 75, 162, 0.3),
+    inset 0 0 80px rgba(255, 255, 255, 0.1);
+}
+
+/* 输入框焦点发光 */
+.ant-input:focus,
+.ant-input-password:focus {
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2), 0 0 20px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* 按钮点击波纹 */
+.ant-btn {
+  transition: transform 0.1s ease;
+}
+
+.ant-btn:active {
+  transform: scale(0.96);
+}
+
+
+/* 角标装饰动画 */
+.corner-decoration {
+  animation: cornerPulse 2s ease-in-out infinite;
+}
+
+@keyframes cornerPulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(102, 126, 234, 0.6));
+  }
+}
+
+/* ===== 移动端菜单从右到左滑入动画 ===== */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ===== 移动端菜单从左到右滑出动画 ===== */
+@keyframes slideOutToRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* ===== 遮罩层淡入动画 ===== */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ===== 遮罩层淡出动画 ===== */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ===== 移动端菜单面板样式 ===== */
+.mobile-menu-panel.menu-visible {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-panel.menu-hidden {
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ===== 移动端遮罩层样式 ===== */
+.mobile-menu-overlay.overlay-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-overlay.overlay-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; /* 隐藏时禁止交互 */
+}
+
+/* ===== 导航栏流动渐变动画 ===== */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== 语言切换器菜单滑入动画 ===== */
+@keyframes languageMenuSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== 二级菜单下滑展开动画 ===== */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== 用户信息弹窗动画 ===== */
+
+/* 光环脉冲动画 */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* 状态指示点脉冲 */
+@keyframes status-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* 旋转背景 */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 侧边栏用户信息悬停光效 */
+@keyframes slideRight {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateX(4px);
+    opacity: 0.8;
+  }
+}
+
+/* ===== Descriptions 项目悬停效果 ===== */
+.description-item-container {
+  transition: all 0.3s ease;
+}
+
+.description-item-container:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, rgba(118, 75, 162, 0.02) 100%) !important;
+}
+
+.description-item-container:hover .description-item-decoration {
+  opacity: 1;
+}
+
+/* ===== 高端科技风滚动条样式 ===== */
+
+/* 定义滚动条颜色变量 */
+:root {
+  --scrollbar-track-bg: rgba(26, 27, 46, 0.3);
+  --scrollbar-thumb-bg: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  --scrollbar-thumb-hover-bg: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+  --scrollbar-width: 8px;
+  --scrollbar-border-radius: 20px; /* 增大圆角值，更柔和 */
+}
+
+/* Webkit 浏览器（Chrome、Safari、Edge）自定义滚动条 */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+/* 滚动条轨道 */
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px !important; /* 强制应用大圆角 */
+  transition: all 0.3s ease;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border-radius: 20px !important; /* 强制应用大圆角 */
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 0 10px rgba(102, 126, 234, 0.3),
+    inset 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+/* 滑块悬停效果 */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-bg);
+  border-color: rgba(102, 126, 234, 0.4);
+  border-radius: 20px !important; /* 强制应用大圆角 */
+  box-shadow: 
+    0 0 16px rgba(102, 126, 234, 0.6),
+    inset 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+/* 滑块激活效果 */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #5a67d8 0%, #6b46c1 100%);
+  border-color: rgba(102, 126, 234, 0.6);
+  border-radius: 20px !important; /* 强制应用大圆角 */
+  box-shadow: 
+    0 0 24px rgba(102, 126, 234, 0.8),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* 滚动条角落（横向和纵向交汇处） */
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* 横向滚动条按钮（如果有的话） */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Firefox 自定义滚动条 */
+
+/* 特定容器的高端滚动条样式（主内容区域） */
+main::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, 
+    rgba(26, 27, 46, 0.2) 0%, 
+    rgba(15, 16, 32, 0.3) 100%);
+  border-left: 1px solid rgba(102, 126, 234, 0.1);
+  border-radius: 20px !important; /* 强制应用大圆角 */
+}
+
+main::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, 
+    rgba(102, 126, 234, 0.8) 0%, 
+    rgba(118, 75, 162, 0.8) 50%, 
+    rgba(102, 126, 234, 0.8) 100%);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 20px !important; /* 强制应用大圆角 */
+  box-shadow: 
+    0 0 12px rgba(102, 126, 234, 0.4),
+    inset 0 0 8px rgba(255, 255, 255, 0.1);
+  animation: scrollbarGlow 3s ease-in-out infinite;
+}
+
+/* 流动光效动画 */
+@keyframes scrollbarGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 12px rgba(102, 126, 234, 0.4),
+      inset 0 0 8px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 20px rgba(102, 126, 234, 0.7),
+      inset 0 0 12px rgba(255, 255, 255, 0.2);
+  }
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, 
+    rgba(102, 126, 234, 0.95) 0%, 
+    rgba(118, 75, 162, 0.95) 50%, 
+    rgba(102, 126, 234, 0.95) 100%);
+  border-color: rgba(102, 126, 234, 0.5);
+  border-radius: 20px !important; /* 强制应用大圆角 */
+  box-shadow: 
+    0 0 24px rgba(102, 126, 234, 0.8),
+    inset 0 0 12px rgba(255, 255, 255, 0.2);
+}

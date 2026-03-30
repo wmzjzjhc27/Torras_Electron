@@ -1,0 +1,32 @@
+# Electron 输出目录
+dist-electron/
+
+# Electron 构建产物
+*.exe
+*.dmg
+*.AppImage
+*.deb
+*.rpm
+
+# Node.js 模块
+node_modules/
+
+# 构建产物
+dist/
+
+# 日志
+logs/
+*.log
+npm-debug.log*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE 配置
+.vscode/
+.idea/
+
+# 临时文件
+*.tmp
+*.swp

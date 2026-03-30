@@ -1,0 +1,272 @@
+/**
+ * 性能优化 CSS 类
+ * 
+ * 提供针对不同设备性能的降级策略和优化工具类
+ */
+
+/* ==================== 设备性能降级策略 ==================== */
+
+/* 低端设备：禁用所有复杂动画 */
+.device-low-end * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+.device-low-end .floating-orb,
+.device-low-end .status-pulse,
+.device-low-end .mobile-menu-panel {
+  will-change: auto !important;
+  transform: none !important;
+}
+
+/* 中端设备：简化动画 */
+.device-mid-range .floating-orb {
+  animation: none;
+}
+
+.device-mid-range .status-pulse {
+  animation-duration: 2s;
+}
+
+/* 高端设备：启用完整 GPU 加速 */
+.device-high-end .floating-orb,
+.device-high-end .status-pulse,
+.device-high-end .mobile-menu-panel {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ==================== 性能优化工具类 ==================== */
+
+/* GPU 加速层 */
+.gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* 禁用指针事件（提升滚动性能） */
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* 硬件加速滚动 */
+.hardware-scroll {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* 平滑滚动但降低优先级 */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* 减少重绘区域 */
+.contain-strict {
+  contain: strict;
+  width: 100%;
+}
+
+/* 内容变化时不触发布局重排 */
+.contain-layout {
+  contain: layout;
+}
+
+/* 样式变化时不触发布局重排 */
+.contain-style {
+  contain: style;
+}
+
+/* 大小变化时不触发布局重排 */
+.contain-size {
+  contain: size;
+}
+
+/* 绘制优化 */
+.contain-paint {
+  contain: paint;
+}
+
+/* ==================== 图片懒加载占位符 ==================== */
+
+.image-placeholder {
+  background: linear-gradient(
+    90deg,
+    rgba(102, 126, 234, 0.1) 0%,
+    rgba(102, 126, 234, 0.2) 50%,
+    rgba(102, 126, 234, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 图片加载完成前保持占位符 */
+.image-loading img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-loaded img {
+  opacity: 1;
+}
+
+/* ==================== 低带宽模式 ==================== */
+
+/* 慢速网络下使用低质量图片 */
+@media (max-width: 768px) and (prefers-reduced-data: reduce) {
+  img {
+    image-rendering: pixelated;
+  }
+  
+  .video-container {
+    display: none;
+  }
+}
+
+/* ==================== 减少动画偏好 ==================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==================== 内存优化 ==================== */
+
+/* 清理不需要的复合层 */
+.cleanup-compositing {
+  transform: translateZ(0);
+}
+
+/* 避免过度使用 fixed 定位 */
+.avoid-fixed {
+  position: absolute;
+}
+
+/* ==================== 渲染性能优化 ==================== */
+
+/* 使用 transform 代替 top/left */
+.transform-move {
+  transform: translateX(0) translateY(0);
+  transition: transform 0.3s ease;
+}
+
+/* 使用 opacity 代替 display */
+.opacity-fade {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.opacity-fade.visible {
+  opacity: 1;
+}
+
+/* 批量 DOM 更新 */
+.batch-update {
+  /* 浏览器会自动批量处理此元素的样式更改 */
+}
+
+/* ==================== 资源加载优化 ==================== */
+
+/* 懒加载容器 */
+.lazy-load-container {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 预加载指示器 */
+.preload-indicator {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(102, 126, 234, 0.2);
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================== 响应式图片加载 ==================== */
+
+/* 根据屏幕尺寸加载不同分辨率的图片 */
+@media (max-width: 768px) {
+  .responsive-image {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+  .responsive-image {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 1441px) {
+  .responsive-image {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ==================== 虚拟滚动优化 ==================== */
+
+.virtual-scroll-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  contain: strict;
+}
+
+.virtual-scroll-item {
+  will-change: transform;
+}
+
+/* ==================== Web Worker 友好类 ==================== */
+
+/* 标记需要后台处理的元素 */
+.worker-process {
+  /* 可以通过 JS 将此类元素的处理 offload 到 Worker */
+}
+
+/* ==================== 防抖节流辅助类 ==================== */
+
+/* 快速响应（用于按钮等） */
+.instant-feedback {
+  transition: all 0.1s ease;
+}
+
+/* 中等延迟（用于卡片悬停） */
+.medium-feedback {
+  transition: all 0.3s ease;
+}
+
+/* 慢速响应（用于大型背景变化） */
+.slow-feedback {
+  transition: all 0.5s ease;
+}

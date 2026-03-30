@@ -1,0 +1,69 @@
+/* 全局样式变量 - 响应式设计系统 */
+:root {
+  /* ===== 主题颜色 ===== */
+  --primary-color: #646cff;
+  --secondary-color: #535bf2;
+  --text-color: #213547;
+  --background-color: #ffffff;
+  --border-color: #eaeaea;
+  
+  /* ===== 响应式断点 (基于常见设备宽度) ===== */
+  /* 手机：< 768px */
+  /* 平板：768px - 1024px */
+  /* 桌面：> 1024px */
+  --breakpoint-xs: 480px;   /* 小手机 */
+  --breakpoint-sm: 768px;   /* 大手机/小平板 */
+  --breakpoint-md: 1024px;  /* 平板 */
+  --breakpoint-lg: 1280px;  /* 小桌面 */
+  --breakpoint-xl: 1536px;  /* 大桌面 */
+  
+  /* ===== 容器最大宽度 ===== */
+  --container-max-width: 1280px;
+  --container-padding: 20px;
+  
+  /* ===== 响应式字体大小 (使用 clamp 实现流体排版) ===== */
+  --font-size-base: clamp(14px, 1vw + 12px, 16px);
+  --font-size-small: clamp(12px, 0.8vw + 10px, 14px);
+  --font-size-large: clamp(18px, 1.2vw + 16px, 20px);
+  --font-size-xl: clamp(24px, 2vw + 20px, 32px);
+  --font-size-2xl: clamp(32px, 3vw + 24px, 48px);
+  --font-size-3xl: clamp(40px, 4vw + 32px, 64px);
+  
+  /* ===== 响应式间距 ===== */
+  --spacing-xs: clamp(4px, 0.5vw, 8px);
+  --spacing-sm: clamp(8px, 1vw, 12px);
+  --spacing-md: clamp(16px, 1.5vw, 24px);
+  --spacing-lg: clamp(24px, 2vw, 32px);
+  --spacing-xl: clamp(32px, 3vw, 48px);
+  --spacing-2xl: clamp(48px, 4vw, 64px);
+  
+  /* ===== 圆角 ===== */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-full: 9999px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  min-height: 100vh;
+}

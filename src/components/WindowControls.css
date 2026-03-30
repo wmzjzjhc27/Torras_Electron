@@ -1,0 +1,53 @@
+/* 窗口控制按钮容器 */
+.window-controls-container {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 64px; /* 与导航栏高度一致 */
+  z-index: 9999;
+  -webkit-app-region: no-drag; /* 按钮区域不可拖动 */
+}
+
+/* 单个窗口控制按钮 */
+.window-control-btn {
+  width: 46px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  font-size: 16px;
+  padding: 0;
+  margin-top: 16px; /* 垂直居中 */
+}
+
+/* 最小化按钮悬停 */
+.window-control-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 关闭按钮悬停 - 红色背景 */
+.close-btn:hover {
+  background-color: #e81123;
+  color: #ffffff;
+}
+
+/* 按钮激活状态 */
+.window-control-btn:active {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(0.95);
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+  .window-controls-container {
+    display: none; /* 移动端隐藏 */
+  }
+}

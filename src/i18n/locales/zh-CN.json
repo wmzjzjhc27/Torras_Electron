@@ -1,0 +1,139 @@
+{
+  "app": {
+    "title": "嵌入式系统应用",
+    "description": "基于 React + TypeScript + Vite 的现代化应用"
+  },
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "login": "登录",
+    "logout": "退出",
+    "profile": "个人中心",
+    "dashboard": "仪表盘",
+    "devices": "设备管理",
+    "help": "帮助中心",
+    "journal": "日志中心",
+    "settings": "系统配置",
+    "deviceList": "设备列表",
+    "deviceMonitor": "设备监控",
+    "maintenanceRecord": "维护记录",
+    "systemLogs": "系统日志",
+    "operationLogs": "操作日志",
+    "errorLogs": "错误日志",
+    "generalSettings": "通用设置",
+    "securitySettings": "安全设置",
+    "networkSettings": "网络设置"
+  },
+  "home": {
+    "welcome": "欢迎使用嵌入式系统应用",
+    "subtitle": "这是一个使用 React + TypeScript + Vite 构建的现代化响应式应用",
+    "features": "功能特性",
+    "techStack": "技术栈",
+    "responsiveDesign": "响应式设计",
+    "modernTech": "现代化技术栈"
+  },
+  "about": {
+    "title": "关于我们",
+    "subtitle": "专注于创新技术，提供优质的产品和服务",
+    "techStack": "技术栈",
+    "contact": "联系方式",
+    "features": "项目特色"
+  },
+  "login": {
+    "title": "用户登录",
+    "subtitle": "欢迎回来，请登录您的账号",
+    "username": "用户名",
+    "password": "密码",
+    "remember": "记住我",
+    "submit": "登录",
+    "loggingIn": "登录中...",
+    "error": "登录失败，请重试",
+    "quickLogin": "💡 开发环境快速登录",
+    "noAccount": "还没有账号？立即注册",
+    "forgotPassword": "忘记密码？",
+    "register": "立即注册",
+    "loginSuccess": "登录成功！",
+    "loginFailed": "登录失败，请检查用户名和密码",
+    "retry": "登录失败，请稍后重试",
+    "usernameRequired": "请输入用户名",
+    "usernameMinLength": "用户名至少 3 个字符",
+    "passwordRequired": "请输入密码",
+    "passwordMinLength": "密码至少 6 个字符",
+    "formValidationFailed": "表单验证失败"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "抱歉，您访问的页面不存在或已被移除",
+    "backHome": "🏠 返回首页"
+  },
+  "help": {
+    "title": "帮助中心",
+    "subtitle": "欢迎使用嵌入式系统后台管理平台，如有任何问题，请查看以下常见问题或联系技术支持。",
+    "faqTitle": "常见问题",
+    "howToAddDevice": "如何添加新设备？",
+    "howToAddDeviceAnswer": "进入设备管理 > 设备列表，点击右上角的\"添加设备\"按钮，填写设备信息后保存即可。",
+    "howToViewMonitor": "如何查看设备监控数据？",
+    "howToViewMonitorAnswer": "进入设备管理 > 设备监控，选择需要查看的设备即可查看实时监控数据。",
+    "howToExportLogs": "如何导出日志？",
+    "howToExportLogsAnswer": "进入日志中心 > 系统日志/操作日志/错误日志，选择时间范围后点击\"导出\"按钮。",
+    "forgotPassword": "忘记密码怎么办？",
+    "forgotPasswordAnswer": "在登录页面点击\"忘记密码\"链接，按照提示重置密码。如果仍然无法解决，请联系管理员。",
+    "supportTitle": "技术支持",
+    "hotline": "客服热线",
+    "email": "技术支持邮箱",
+    "serviceHours": "服务时间",
+    "serviceTimeValue": "周一至周五 9:00-18:00"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "search": "搜索",
+    "back": "返回",
+    "add": "添加",
+    "export": "导出",
+    "reset": "重置",
+    "close": "关闭",
+    "yes": "是",
+    "no": "否",
+    "ok": "确定"
+  },
+  "device": {
+    "mobile": "📱 手机",
+    "tablet": "📱 平板",
+    "desktop": "💻 桌面"
+  },
+  "status": {
+    "windowWidth": "窗口宽度",
+    "windowHeight": "窗口高度",
+    "currentBreakpoint": "当前断点",
+    "deviceType": "设备类型"
+  },
+  "auth": {
+    "logoutSuccess": "已成功退出登录",
+    "logoutFailed": "退出登录失败",
+    "pleaseLogin": "请先登录",
+    "redirecting": "正在跳转..."
+  },
+  "user": {
+    "info": "用户信息",
+    "username": "用户名",
+    "role": "角色",
+    "email": "邮箱",
+    "phone": "电话",
+    "department": "部门",
+    "online": "在线",
+    "administrator": "系统管理员",
+    "logout": "退出登录",
+    "logoutConfirm": "确定要退出登录吗？",
+    "logoutSuccess": "已成功退出登录",
+    "logoutFailed": "退出登录失败",
+    "profile": "个人信息",
+    "settings": "个人设置"
+  }
+}
